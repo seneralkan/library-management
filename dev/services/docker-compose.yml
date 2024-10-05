@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: bitnami/postgresql:17.0.0
+    container_name: library-management-service-postgres
+    restart: on-failure
+    environment:
+      - POSTGRESQL_USERNAME=postgres
+      - POSTGRESQL_PASSWORD=postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    # platform for M1 Mac
+    platform: linux/amd64
+
+volumes:
+  postgres_data:
